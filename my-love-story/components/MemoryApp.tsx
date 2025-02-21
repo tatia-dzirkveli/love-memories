@@ -496,11 +496,11 @@ const MemoryApp = () => {
 
         <nav className="flex flex-wrap justify-center gap-4 mb-12">
           {[
-            { icon: <Calendar />, label: "დროის ხაზი", section: 'timeline' },
-            { icon: <Camera />, label: "გალერეა", section: 'gallery' },
-            { icon: <Heart />, label: "რატომ მიყვარხარ", section: 'letters' },
-            { icon: <Map />, label: "ჩვენი ადგილები", section: 'map' },
-            { icon: <Target />, label: "ჩვენი მომავალი", section: 'goals' }
+            { icon: Calendar, label: "დროის ხაზი", section: 'timeline' },
+            { icon: Camera, label: "გალერეა", section: 'gallery' },
+            { icon: Heart, label: "რატომ მიყვარხარ", section: 'letters' },
+            { icon: Map, label: "ჩვენი ადგილები", section: 'map' },
+            { icon: Target, label: "ჩვენი მომავალი", section: 'goals' }
           ].map(item => (
             <NavButton
               key={item.section}
