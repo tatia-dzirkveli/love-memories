@@ -16,20 +16,28 @@ const MemoryApp = () => {
   const [showLoveNote, setShowLoveNote] = useState(false);
   const [selectedReason, setSelectedReason] = useState('');
   const [hearts, setHearts] = useState<{ id: number; left: number; animationDuration: number; }[]>([]);
-  const [audio] = useState(new Audio('/song/us_song.mp3'));
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (isPlaying) {
-      audio.play();
-    } else {
-      audio.pause();
-      audio.currentTime = 0;
+    if (typeof window !== "undefined") {
+      setAudio(new Audio('/song/us_song.mp3'));
     }
-
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-    };
+  }, []);
+  
+  useEffect(() => {
+    if (audio) {
+      if (isPlaying) {
+        audio.play();
+      } else {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+  
+      return () => {
+        audio.pause();
+        audio.currentTime = 0;
+      };
+    }
   }, [isPlaying, audio]);
 
   useEffect(() => {
