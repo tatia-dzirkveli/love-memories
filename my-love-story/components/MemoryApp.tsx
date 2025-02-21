@@ -400,7 +400,7 @@ const MemoryApp = () => {
                 <p className="text-gray-700">{event.description}</p>
                 {event.specialMemory && (
                   <div className="mt-4 p-3 bg-pink-50 rounded-lg italic text-gray-600">
-                    "{event.specialMemory}"
+                    {event.specialMemory}
                   </div>
                 )}
               </CardContent>
