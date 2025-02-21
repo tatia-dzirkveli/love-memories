@@ -446,17 +446,20 @@ const MemoryApp = () => {
     </div>
   );
 
-  const NavButton = ({ icon, label, active, onClick }) => (
+  const NavButton = ({ icon: Icon, label, active, onClick }: { 
+    icon: React.ElementType; 
+    label: string; 
+    active: boolean; 
+    onClick: () => void; 
+  }) => (
     <button
       onClick={onClick}
       className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 ${
-        active 
-          ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg scale-105' 
-          : 'bg-white text-gray-600 hover:bg-pink-50'
+        active ? "bg-pink-500 text-white" : "bg-gray-100 text-gray-800"
       }`}
     >
-      {React.cloneElement(icon, { className: 'w-5 h-5' })}
-      <span>{label}</span>
+      <Icon className="w-6 h-6" />
+      {label}
     </button>
   );
 
