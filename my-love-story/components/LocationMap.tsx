@@ -6,7 +6,11 @@ const LocationMap = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
 
-  const [selectedMarker, setSelectedMarker] = useState(null);
+  const [selectedMarker, setSelectedMarker] = useState<{
+    position: { lat: number; lng: number };
+    name: string;
+    description: string;
+  } | null>(null);
   
   const locations = useMemo(() => [
     { position: { lat: 43.0423, lng: 42.7205 }, name: "მესტია", description: "სვანეთის მთავარი ქალაქი" },
