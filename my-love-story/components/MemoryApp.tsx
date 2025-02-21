@@ -15,7 +15,7 @@ const MemoryApp = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showLoveNote, setShowLoveNote] = useState(false);
   const [selectedReason, setSelectedReason] = useState('');
-  const [hearts, setHearts] = useState([]);
+  const [hearts, setHearts] = useState<{ id: number; left: number; animationDuration: number; }[]>([]);
   const [audio] = useState(new Audio('/song/us_song.mp3'));
 
   useEffect(() => {
@@ -34,14 +34,14 @@ const MemoryApp = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHearts(prevHearts => {
-        const newHeart = {
+      setHearts(prevHearts => [
+        ...prevHearts,
+        {
           id: Date.now(),
           left: Math.random() * 100,
-          animationDuration: 3 + Math.random() * 3
-        };
-        return [...prevHearts, newHeart].slice(-20);
-      });
+          animationDuration: Math.random() * 3 + 2, // 
+        }
+      ]);
     }, 2000);
   
     return () => clearInterval(interval);
