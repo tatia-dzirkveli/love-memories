@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, memo, useMemo, } from 'react';
+import React, { useState, useEffect,  useMemo, } from 'react';
 import { Heart, Camera, Music, Calendar, Map, Target, X } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
@@ -25,12 +25,12 @@ const MemoryApp = () => {
       audio.pause();
       audio.currentTime = 0;
     }
+
     return () => {
       audio.pause();
       audio.currentTime = 0;
     };
-  }, [isPlaying]);
-
+  }, [isPlaying, audio]);
 
   useEffect(() => {
     const interval = setInterval(() => {
